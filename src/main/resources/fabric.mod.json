@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "math-solver",
+  "version": "${version}",
+  "name": "MC Math Solver",
+  "description": "Adds commands that solve math expressions",
+  "authors": [
+    "PeronTheDuck"
+  ],
+  "contributors": [],
+  "contact": {
+    "homepage": "https://github.com/PeronTheDuck/MC-Math-Solver",
+    "sources": "https://github.com/PeronTheDuck/MC-Math-Solver"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/math-solver/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "mms.main.MmsInit"
+    ],
+    "client": [],
+    "server": []
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.10.2",
+    "fabric": "*"
+  }
+}
