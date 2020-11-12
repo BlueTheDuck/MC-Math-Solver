@@ -22,27 +22,21 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
-public class Solve implements Command<ServerCommandSource> {
-    private Solve() {
+public class Solve {
+    public static void register() {
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
             if (dedicated)
                 MmsInit.log(Level.WARN, "/solve won't be registered on the server side");
             else
                 dispatcher.register(getCommand());
         });
-
     }
 
-    public static void register() {
-        new Solve();
+    static private LiteralArgumentBuilder<ServerCommandSource> getCommand() {
+        return literal("solve").then(argument("expression", string()).executes(ctx -> run(ctx)));
     }
 
-    private LiteralArgumentBuilder<ServerCommandSource> getCommand() {
-        return literal("solve").then(argument("expression", string()).executes(this));
-    }
-
-    @Override
-    public int run(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
+    static public int run(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
         String exp = StringArgumentType.getString(ctx, "expression");
         int code;
         Text response;
